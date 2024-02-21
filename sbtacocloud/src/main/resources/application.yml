@@ -1,0 +1,14 @@
+logging:
+  level:
+    ROOT: INFO
+    org.h2.jdbc: DEBUG
+    oracle.jdbc: DEBUG
+
+
+spring:
+  thymeleaf:
+    cache: false
+
+  datasource:
+    generate-unique-name: false
+    name: tacoCloud
