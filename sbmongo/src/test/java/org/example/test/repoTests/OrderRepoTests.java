@@ -24,7 +24,7 @@ class OrderRepoTests {
     @Test
     void insertAndAssert(){
        TacoOrder tacoOrder =  orderRepo.save(getTacoOrder());
-       assertThat(tacoOrder.getId()).isPositive();
+       assertThat(tacoOrder.getId()).isNotEmpty();
 
     }
 
