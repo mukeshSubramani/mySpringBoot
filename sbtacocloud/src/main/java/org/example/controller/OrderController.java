@@ -2,8 +2,10 @@ package org.example.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
+import org.example.domains.User;
 import org.example.repo.OrderRepo;
 import org.example.domains.TacoOrder;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +34,15 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(@Valid TacoOrder tacoOrder, Errors errors, SessionStatus sessionStatus){
+    public String processOrder(@Valid TacoOrder tacoOrder, Errors errors,
+                               SessionStatus sessionStatus,
+                               @AuthenticationPrincipal User user){
         if(errors.hasErrors()){
             log.info("Taco object validation failed {}" ,errors.getAllErrors());
             return "orderForm";
         }
         log.info("Saving order , please wait");
+        tacoOrder.setUser(user);
         tacoOrder.setPlacedAt(new Date());
         orderRepo.save(tacoOrder);
         log.info("Order Submitted: {}",tacoOrder);
