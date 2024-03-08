@@ -12,3 +12,10 @@ spring:
   datasource:
     generate-unique-name: false
     name: tacoCloud
+
+
+
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
