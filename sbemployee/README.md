@@ -9,11 +9,13 @@ Spring Boot module for managing employee details with H2 in-memory database.
 - CRUD operations (Create, Read, Update)
 - Spring Data JPA for database operations
 - Lombok for reducing boilerplate code
+- Spring Boot Actuator for application monitoring and health checks
 
 ## Technologies
 
 - Spring Boot 3.2.2
 - Spring Data JPA
+- Spring Boot Actuator
 - H2 Database
 - Lombok
 - Java 17
@@ -91,6 +93,31 @@ You can access the H2 database console at:
 - JDBC URL: jdbc:h2:mem:employeedb
 - Username: sa
 - Password: (leave blank)
+
+## Actuator Endpoints
+
+Spring Boot Actuator provides monitoring and management capabilities for the application.
+
+### Available Endpoints
+
+- **Health**: `GET /actuator/health` - Application health status with detailed component information (database, disk space)
+- **Info**: `GET /actuator/info` - Application information
+- **Metrics**: `GET /actuator/metrics` - List of available metrics
+  - Specific metric: `GET /actuator/metrics/{metricName}` - e.g., `/actuator/metrics/jvm.memory.used`
+- **Environment**: `GET /actuator/env` - Environment properties
+
+### Example Actuator Requests
+
+```bash
+# Check application health
+curl http://localhost:8080/actuator/health
+
+# List all available metrics
+curl http://localhost:8080/actuator/metrics
+
+# Check JVM memory usage
+curl http://localhost:8080/actuator/metrics/jvm.memory.used
+```
 
 ## Testing the API
 
