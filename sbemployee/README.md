@@ -104,7 +104,6 @@ Spring Boot Actuator provides monitoring and management capabilities for the app
 - **Info**: `GET /actuator/info` - Application information
 - **Metrics**: `GET /actuator/metrics` - List of available metrics
   - Specific metric: `GET /actuator/metrics/{metricName}` - e.g., `/actuator/metrics/jvm.memory.used`
-- **Environment**: `GET /actuator/env` - Environment properties
 
 ### Example Actuator Requests
 
